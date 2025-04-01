@@ -63,11 +63,11 @@ Current version: 2025.1
 
 ### Running GROMACS
 
-    docker run --gpus=all -it --rm gromacs:2025.1
+    docker run --gpus=all -it --rm gromacs:2025.1 gmx
 
 With the current working directory bind mounted (like a symbolic link) to /data inside the container.
 
-    docker run --gpus=all -it --rm -v .:/data gromacs:2025.1 /data/dynamics.sh
+    docker run --gpus=all -it --rm -v .:/data gromacs:2025.1 gmx
 
 ### Options to consider adding
 
