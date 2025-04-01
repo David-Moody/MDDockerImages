@@ -82,5 +82,8 @@ Current version: Always latest
 
 ### Running OpenMM
 
-    docker run --gpus=all -it --rm -v .:/data openmm:latest /data/dynamics.sh
     docker run --gpus=all -it --rm openmm:latest
+
+With the current working directory bind mounted (like a symbolic link) to /data inside the container.
+
+    docker run --gpus=all -it --rm -v .:/data openmm:latest python script.py
