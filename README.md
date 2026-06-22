@@ -56,18 +56,19 @@ OR
 
 ## GROMACS
 
-Current version: 2025.1
+Current version: 2026.1
 
     cd GROMACS
-    docker build . -t gromacs:2025.1
+    docker build . -t gromacs:2026.1
+    docker build . -f Dockerfile_slim -t gromacs:2026.1-slim
 
 ### Running GROMACS
 
-    docker run --gpus=all -it --rm gromacs:2025.1 gmx
+    docker run --gpus=all -it --rm gromacs:2026.1 gmx
 
 With the current working directory bind mounted (like a symbolic link) to /data inside the container.
 
-    docker run --gpus=all -it --rm -v .:/data gromacs:2025.1 gmx
+    docker run --gpus=all -it --rm -v .:/data gromacs:2026.1 gmx
 
 ### Options to consider adding
 

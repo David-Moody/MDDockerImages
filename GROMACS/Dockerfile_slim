@@ -22,7 +22,7 @@ RUN tar xfz $GROMACS_VERSION.tar.gz && \
     mkdir build
 
 RUN cd $GROMACS_VERSION/build && \
-    cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=CUDA
+    cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=CUDA -DGMX_BUILD_SHARED_EXE=OFF
 
 RUN cd $GROMACS_VERSION/build && \
     make -j$CPU_CORES
@@ -32,6 +32,10 @@ RUN cd $GROMACS_VERSION/build && \
 
 RUN cd $GROMACS_VERSION/build && \
     make install 
+
+FROM nvidia/cuda:${BASE_IMAGE_CUDA_VERSION}-devel-ubuntu${BASE_IMAGE_UBUNTU_VERSION} AS final
+
+COPY --from=base /usr/local/gromacs /usr/local/gromacs
 
 ENV PATH=/usr/local/gromacs/bin:$PATH
 
